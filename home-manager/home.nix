@@ -372,14 +372,15 @@ in {
     # emacs
     emacs = {
       enable = true;
-      package = pkgs.emacsGit;
+      # package = pkgs.emacsGit;
+      package = pkgs. emacsPgtk;
       extraPackages = (epkgs: [ epkgs.vterm ]);
     };
   };
 
   services.emacs = {
     enable = true;
-    package = pkgs.emacsGit;
+    package = pkgs.emacsPgtk;
     client.enable = true;
   };
 
