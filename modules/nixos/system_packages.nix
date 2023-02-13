@@ -57,7 +57,7 @@
     pciutils
     stdenv.cc.cc.lib
     teamviewer
-    plymouth
+    # plymouth
     gnomeExtensions.appindicator
     gnomeExtensions.mpris-label
     gnomeExtensions.no-activities-button
