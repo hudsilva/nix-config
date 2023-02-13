@@ -1,0 +1,79 @@
+# ZSH_THEME="robbyrussell"
+
+# custom aliases
+alias t="exa --tree"
+
+alias e="emacsclient -n -c"
+alias ec="emacs -nw"
+alias esk="killall emacs"
+alias em="emacs --daemon"
+
+# git aliases
+alias gpo='git push -u origin `git rev-parse --abbrev-ref HEAD`'
+alias gpl='git pull origin `git rev-parse --abbrev-ref HEAD`'
+
+# clean all docker images
+alias docker_clean="docker rmi $(docker images -a -q)"
+
+# list
+alias lstree='ls -R | grep ":$" | sed -e "s/:$//" -e "s/[^-][^\/]*\//--/g" -e "s/^/ /" -e "s/-/|/"'
+
+# open folder
+alias open="xdg-open"
+
+# timezones
+alias tz="\
+    printf 'Sao Paulo:\t ';\
+    TZ='America/Sao_Paulo' date;\
+    printf 'San Francisco:\t ';\
+    TZ='America/Los_Angeles' date;\
+    printf 'London:\t\t ';\
+    TZ='Europe/London' date;\
+    printf 'Porto:\t\t ';\
+    TZ='Europe/Lisbon' date;\
+    printf 'Prague:\t\t ';\
+    TZ='Europe/Prague' date;\
+"
+
+# change ls and cat commands
+alias ls="exa"
+alias cat="bat --paging=never --style=plain"
+
+# extract files
+
+# Easy way to extract archives
+extract () {
+   if [ -f "$1" ] ; then
+       case "$1" in
+           *.tar.bz2)   tar xvjf "$1";;
+           *.tar.gz)    tar xvzf "$1";;
+           *.bz2)       bunzip2 "$1" ;;
+           *.rar)       unrar x "$1" ;;
+           *.gz)        gunzip "$1"  ;;
+           *.tar)       tar xvf "$1" ;;
+           *.tbz2)      tar xvjf "$1";;
+           *.tgz)       tar xvzf "$1";;
+           *.zip)       unzip "$1"   ;;
+           *.Z)         uncompress "$1"  ;;
+           *.7z)        7z x "$1";;
+           *) echo "don't know how to extract '$1'..." ;;
+       esac
+   else
+       echo "'$1' is not a valid file!"
+   fi
+}
+
+# z
+# [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+
+# pathadd "$HOME/.local/bin"        # my personal scripts and lvim
+# pathadd "$HOME/.cargo/bin"        # rust binaries
+# pathadd "$HOME/go/bin"            # golang binaries
+# pathadd "$HOME/.npm-global/bin"   # javascript/npm binaries
+
+# xdg-open
+# export BROWSER=/usr/bin/firefox
+# export DISPLAY=:0
+
+# Start starship
+# eval "$(starship init zsh)"

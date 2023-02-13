@@ -13,7 +13,7 @@
     hardware.url = "github:nixos/nixos-hardware";
 
     # emacs
-    emacs.url = "github:nix-community/emacs-overlay";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
 
     devshell.url = "github:numtide/devshell";
 
@@ -22,7 +22,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, hardware, emacs, devshell, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, hardware, emacs-overlay, devshell, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [

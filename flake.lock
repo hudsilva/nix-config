@@ -19,7 +19,7 @@
         "type": "github"
       }
     },
-    "emacs": {
+    "emacs-overlay": {
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nixpkgs": "nixpkgs_2"
@@ -155,7 +155,7 @@
     "root": {
       "inputs": {
         "devshell": "devshell",
-        "emacs": "emacs",
+        "emacs-overlay": "emacs-overlay",
         "hardware": "hardware",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_3"

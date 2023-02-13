@@ -30,7 +30,7 @@ in {
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.modifications
       outputs.overlays.additions
-      outputs.overlays.emacs
+      inputs.emacs-overlay.overlay
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -258,7 +258,7 @@ in {
           "tmuxinator"
           "postgres"
         ];
-        customPkgs = with pkgs; [ nix-zsh-completions ];
+        # customPkgs = with pkgs; [ nix-zsh-completions ];
       };
       initExtra = ''
         export XDG_DATA_HOME="$HOME/.local/share"
@@ -384,7 +384,7 @@ in {
   };
 
   # zsh scripts
-  home.file.".custom_aliases".source = ~/codes/dotfiles/config/custom_aliases;
+  home.file.".custom_aliases".source = ./custom_aliases;
 
   # variables
   home.sessionPath =
