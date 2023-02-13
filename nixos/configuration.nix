@@ -106,16 +106,12 @@ in {
   ];
 
   # plymouth config
-  # boot.initrd.systemd.enable = true;
-  # boot.plymouth = {
-  #   enable = true;
-  #   theme = "hud_3";
-  #   themePackages = [
-  #     (pkgs.plymouth-theme-hud.override {
-  #       inherit (config.boot.plymouth) logo;
-  #     })
-  #   ];
-  # };
+  boot.initrd.systemd.enable = true;
+  boot.plymouth = {
+    enable = true;
+    theme = "hud_3";
+    themePackages = [ pkgs.plymouth-theme-hud ];
+  };
 
   # user group config
   users.users = {
