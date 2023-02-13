@@ -39,8 +39,8 @@
     xclip
     zlib
 
-    nvtop-nvidia
-    nvidia-offload
+    # nvtop-nvidia
+    # nvidia-offload
     bluez
     bluez-tools
     bluez-alsa

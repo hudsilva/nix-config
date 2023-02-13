@@ -28,7 +28,6 @@ in {
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
-    ./packages
   ];
 
   nixpkgs = {
@@ -110,8 +109,12 @@ in {
   boot.initrd.systemd.enable = true;
   boot.plymouth = {
     enable = true;
-    themePackages = [ pkgs.adi1090x-plymouth ];
     theme = "hud_3";
+    themePackages = [
+      (pkgs.plymouth-theme-hud.override {
+        inherit (config.boot.plymouth) logo;
+      })
+    ];
   };
 
   # user group config
