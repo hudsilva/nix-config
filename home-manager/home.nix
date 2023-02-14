@@ -58,9 +58,9 @@ in {
 
   home.packages = with pkgs; [
     notion-app-enhanced
+    bottom
     steam
     nixfmt
-    bottom
     htop
     discord
     asdf-vm
