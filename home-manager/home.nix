@@ -57,6 +57,7 @@ in {
   };
 
   home.packages = with pkgs; [
+    notion-app-enhanced
     steam
     nixfmt
     bottom
