@@ -12,6 +12,9 @@
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     nix-colors.url = "github:misterio77/nix-colors";
+    hyprland.url = "github:hyprwm/hyprland/v0.19.2beta";
+    hyprwm-contrib.url = "github:hyprwm/contrib";
+    firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
   };
 
   outputs = { self, nixpkgs, home-manager, hardware, emacs-overlay, devshell
@@ -64,6 +67,15 @@
             ./home-manager/home.nix
           ];
         };
+      };
+
+      nixConfig = {
+        extra-substituters =
+          [ "https://hyprland.cachix.org" "https://nix-community.cachix.org" ];
+        extra-trusted-public-keys = [
+          "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        ];
       };
     };
 }
