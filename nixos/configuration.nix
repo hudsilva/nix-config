@@ -97,13 +97,8 @@ in {
   boot.initrd.verbose = false;
 
   # kernel params
-  boot.kernelParams = [
-    "loglevel=3"
-    "quiet"
-    "nouveau.modeset=0"
-    "ibt=off"
-    "vt.global_cursor_default=0"
-  ];
+  boot.kernelParams =
+    [ "loglevel=3" "quiet" "ibt=off" "vt.global_cursor_default=0" ];
 
   # plymouth config
   boot.initrd.systemd.enable = true;
@@ -269,6 +264,9 @@ in {
 
   # Steam Proton Config
   systemd.extraConfig = "DefaultLimitNOFILE=1048576";
+
+  # backlight keyboard
+  programs.light.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "22.11";
