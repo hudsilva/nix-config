@@ -62,5 +62,7 @@
     gnomeExtensions.mpris-label
     gnomeExtensions.no-activities-button
     steam
+
+    gnome3.adwaita-icon-theme
   ];
 }

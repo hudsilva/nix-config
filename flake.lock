@@ -278,6 +278,38 @@
         "type": "github"
       }
     },
+    "nixpkgs-master": {
+      "locked": {
+        "lastModified": 1676502291,
+        "narHash": "sha256-BQrLpmp58KhetilW96LB+dxrp6KEu0rke4uo9kFf7Kk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "0617712c14133397dcc7e2dd4cac2c1bdf12ea6a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1676300157,
+        "narHash": "sha256-1HjRzfp6LOLfcj/HJHdVKWAkX9QRAouoh6AjzJiIerU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "545c7a31e5dedea4a6d372712a18e00ce097d462",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1673540789,
@@ -368,7 +400,9 @@
         "hyprland": "hyprland",
         "hyprwm-contrib": "hyprwm-contrib",
         "nix-colors": "nix-colors",
-        "nixpkgs": "nixpkgs_6"
+        "nixpkgs": "nixpkgs_6",
+        "nixpkgs-master": "nixpkgs-master",
+        "nixpkgs-unstable": "nixpkgs-unstable"
       }
     },
     "utils": {

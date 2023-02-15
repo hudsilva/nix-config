@@ -396,6 +396,17 @@ in {
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
+  # setup cursor pointer
+  home.pointerCursor = {
+    name = "Adwaita";
+    package = pkgs.gnome.adwaita-icon-theme;
+    size = 24;
+    x11 = {
+      enable = true;
+      defaultCursor = "Adwaita";
+    };
+  };
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "22.11";
 }

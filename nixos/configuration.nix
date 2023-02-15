@@ -223,7 +223,7 @@ in {
 
     displayManager = {
       gdm.enable = true;
-      gdm.wayland = false;
+      gdm.wayland = true;
       gdm.autoSuspend = false;
     };
     desktopManager.gnome.enable = true;
@@ -254,6 +254,7 @@ in {
   services.teamviewer.enable = true;
 
   # steam service config
+  hardware.steam-hardware.enable = true;
   programs.steam = {
     enable = true;
     remotePlay.openFirewall =
