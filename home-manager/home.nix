@@ -278,32 +278,31 @@ in {
     tmux = {
       enable = true;
       clock24 = true;
-      # plugins = with pkgs.tmuxPlugins; [
-      #   sensible
-      #   yank
-      #   {
-      #     plugin = dracula;
-      #     extraConfig = ''
-      #       set -g @dracula-show-battery false
-      #       set -g @dracula-show-powerline true
-      #       set -g @dracula-refresh-rate 10
-      #       set -g @dracula-show-fahrenheit false
-      #       set -g @dracula-show-weather false
-      #       set -g @dracula-show-left-icon 
-      #       '';
-      #   }
-      # ];
+      plugins = with pkgs.tmuxPlugins; [
+        sensible
+        yank
+        {
+          plugin = dracula;
+          extraConfig = ''
+            set -g @dracula-show-powerline true
+            set -g @dracula-refresh-rate 5
+            set -g @dracula-show-left-icon 
+            set -g @dracula-plugins "time"
+            set -g @dracula-show-timezone false
+
+            # set -g @dracula-network-bandwidth wlan0
+            # set -g @dracula-network-bandwidth-interval 0
+            # set -g @dracula-network-bandwidth-show-interface true
+            '';
+        }
+      ];
 
       extraConfig = ''
-        set -g @plugin 'tmux-plugins/tpm'
+        set -g @plugin 'tmux-plugins/tmux-yank'
         set -g @plugin 'tmux-plugins/tmux-sensible'
         set -g @plugin 'dracula/tmux'
 
         set -g default-terminal "screen-256color"
-        set -g @dracula-plugins "network time"
-        set -g @dracula-show-timezone false
-        set -g @dracula-show-powerline true
-        set -g @dracula-show-left-icon 
 
         # Dracula Color Pallette
         white='#f8f8f2'
@@ -372,8 +371,6 @@ in {
 
         # set-window-option -g window-status-current-format "#[fg=$gray,bg=$dark_purple]$left_sep#[fg=$white,bg=$dark_purple] #W$current_flags #[fg=$dark_purple,bg=$gray]$left_sep"
         # set-window-option -g window-status-format "#[fg=$white]#[bg=$gray] #W$flags"
-
-        run -b '~/.tmux/plugins/tpm/tpm
       '';
     };
 
@@ -408,6 +405,7 @@ in {
 
     ln -Tsf ~/codes/nix-config/config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
     ln -Tsf ~/codes/nix-config/config/alacritty/dracula.yml ~/.config/alacritty/themes/dracula.yml
+
   '';
 
   # setup cursor pointer
