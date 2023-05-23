@@ -87,7 +87,7 @@ in {
   # setup luks
   boot.initrd.luks.devices = {
     crypted = {
-      device = "/dev/disk/by-uuid/92d84092-65a1-4de0-b837-5bdb2543c06a";
+      device = "/dev/disk/by-uuid/cced9393-4d3a-449a-86fa-d5bf41a0fd6d";
       preLVM = true;
     };
   };
@@ -97,8 +97,7 @@ in {
   boot.initrd.verbose = false;
 
   # kernel params
-  boot.kernelParams =
-    [ "loglevel=3" "quiet" "ibt=off" "vt.global_cursor_default=0" ];
+  # boot.kernelParams = [ "loglevel=3" "quiet" "ibt=off" "vt.global_cursor_default=0" ];
 
   # plymouth config
   boot.initrd.systemd.enable = true;
@@ -223,7 +222,7 @@ in {
 
     displayManager = {
       gdm.enable = true;
-      gdm.wayland = true;
+      gdm.wayland = false;
       gdm.autoSuspend = false;
     };
     desktopManager.gnome.enable = true;

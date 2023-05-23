@@ -1,0 +1,34 @@
+# Editor configuration, see https://editorconfig.org
+# This file is for unifying the coding style for different editors and IDEs
+#
+# A full list of supported properties can be found at:
+# https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+# Unix-style newlines with a newline ending every file
+end_of_line = lf
+insert_final_newline = true
+# remove all trailing whitespace from files
+trim_trailing_whitespace = true
+
+
+[*.{php, py, java, html, ts, h, cpp, kt}]
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+
+[*.{js, json, yml, css, xml, rb, md, cr, ino, ex, exs}]
+indent_style = space
+indent_size = 2
+
+[*.{go, sh}]
+indent_style = tab
+tab_width = 8
+
+[*.md]
+trim_trailing_whitespace = false
+

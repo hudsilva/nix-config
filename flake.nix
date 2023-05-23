@@ -9,7 +9,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hardware.url = "github:nixos/nixos-hardware";
+    hardware.url = "github:nixos/nixos-hardware/master";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     devshell.url = "github:numtide/devshell";
     nix-colors.url = "github:misterio77/nix-colors";

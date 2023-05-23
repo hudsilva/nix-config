@@ -1,0 +1,103 @@
+[color]
+  ui = true
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red
+  new = green
+[alias]
+  a = add
+  chunkyadd = add --patch
+
+  snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+  snapshots = !git stash list --grep snapshot
+
+  recent-branches = !git for-each-ref --count=15 --sort=-committerdate refs/heads/ --format='%(refname:short)'
+
+  b = branch -v
+
+  dic = diff --cached
+
+  c = commit -m
+  ca = commit -am
+  ci = commit
+  amend = commit --amend
+
+  co = checkout
+  nb = checkout -b
+
+  cp = cherry-pick -x
+
+  d = diff
+  dc = diff --cached
+  last = diff HEAD^
+
+  l = log --graph --pretty=oneline --abbrev-commit --branches=*
+  lg = log --graph --branches=* --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
+  short = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\"
+  simple = log --pretty=format:\" * %s\"
+  shortnocolor = log --pretty=format:\"%h %cr %cn %s\"
+
+  pl = pull
+
+  ps = push
+
+  rc = rebase --continue
+  rs = reabase --skip
+  r = remote -y
+
+  unstage = reset HEAD
+  uncommit = reset --soft HEAD^
+  filelog = log -u
+  mt = mergetool
+
+  ss = stash
+  sl = stash list
+  sa = stash apply
+  sd = stash drop
+
+  s = status
+  st = status
+
+  t = tag -n
+[format]
+  pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
+[mergetool]
+  prompt = false
+[mergetool "mvimdiff"]
+  cmd = "nvim -c 'Gdiff' $MERGED"
+  keepbackup = false
+[merge]
+  summary = true
+  verbosity = 1
+  tool = mvimdiff
+[apply]
+  whitespace = nowarn
+[branch]
+  autosetupmerge = true
+[push]
+  default = upstream
+[core]
+  autocrlf = false
+  editor = nvim
+  excludefile = ~/.gitignore
+	excludesfile = /home/hudsoncouto/.gitignore_global
+[advice]
+  statusHints = false
+[diff]
+  mnemonicprefix = true
+  algorithm = patience
+[rerere]
+  enabled = true
+[user]
+  name = Hudson Couto
+  email = hudson.sama@gmail.com
+
+[pull]
+	ff = only
+

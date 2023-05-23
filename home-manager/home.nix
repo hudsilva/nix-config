@@ -212,7 +212,13 @@ in {
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs = {
-    git.enable = true;
+    git = {
+      enable = true;
+      package = pkgs.gitAndTools.hub;
+      userName = "Hudson Couto";
+      userEmail = "hudson.sama@gmail.com";
+      includes = [{ path = "~/codes/nix-config/config/gitconfig"; }];
+    };
     bottom.enable = true;
     autojump.enable = true;
     bat.enable = true;
