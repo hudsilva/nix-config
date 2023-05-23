@@ -152,6 +152,7 @@ in {
     screenfetch
     tdesktop
     alacritty
+    kitty
     neofetch
     gimp
     inkscape
@@ -399,6 +400,15 @@ in {
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+
+  # create symbolic links
+  home.activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
+    mkdir -p ~/.config/alacritty/
+    mkdir -p ~/.config/alacritty/themes/
+
+    ln -Tsf ~/codes/nix-config/config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+    ln -Tsf ~/codes/nix-config/config/alacritty/dracula.yml ~/.config/alacritty/themes/dracula.yml
+  '';
 
   # setup cursor pointer
   home.pointerCursor = {
