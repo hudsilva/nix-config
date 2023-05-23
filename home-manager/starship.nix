@@ -4,8 +4,11 @@
     enableZshIntegration = true;
     settings = {
       add_newline = false;
-      format = "$directory$username$hostname$nix_shell\\($git_branch$git_commit$git_metrics$git_state$git_status\\) $character$jobs$cmd_duration";
-      # format = "$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
+      format =
+        let
+          git = "\\($git_branch$git_commit$git_metrics$git_state$git_status\\)";
+        in
+        "$directory$username$hostname$nix_shell(${git}) $character$jobs$cmd_duration";
       line_break = {
         disabled = true;
       };
