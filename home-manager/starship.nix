@@ -4,7 +4,7 @@
     enableZshIntegration = true;
     settings = {
       add_newline = false;
-      # format = "$all";
+      format = "$directory$username$hostname$nix_shell\\($git_branch$git_commit$git_metrics$git_state$git_status\\) $character$jobs$cmd_duration";
       # format = "$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
       line_break = {
         disabled = true;
@@ -55,8 +55,10 @@
         min_time_to_notify = 45000;
       };
       character = {
-        success_symbol = "[λ](bold #f8f8f2)";
-        error_symbol = "[λ](bold #ff5555)";
+        # success_symbol = "[λ](bold #f8f8f2)";
+        # error_symbol = "[λ](bold #ff5555)";
+        success_symbol = " (bold #f8f8f2)";
+        error_symbol = " (bold #ff5555)";
       };
       container = {
         format = "[$symbol [$name]]($style) ";
@@ -142,8 +144,10 @@
       };
       git_branch = {
         format = "[$symbol$branch(:$remote_branch)]($style) ";
+        # format = "\\([$symbol$branch(:$remote_branch)]($style)\\)";
         symbol = " ";
-        style = "bold #ff79c6";
+        # style = "bold #ff79c6";
+        style = "#d6acff";
         truncation_length = 9223372036854775807;
         truncation_symbol = "…";
         only_attached = false;
@@ -169,7 +173,7 @@
       };
       git_status = {
         style = "bold #ff5555";
-        # format = '([\[$all_status$ahead_behind\]]($style) )';
+        format = "[$all_status$ahead_behind]($style)";
       };
       golang = {
         format = "[$symbol($version )]($style)";
@@ -225,6 +229,12 @@
         style = "bold #bd93f9";
         trim_at = ".";
       };
+      # os = {
+      #   disabled = false;
+      #   symbols = [
+      #     NixOS = "❄️  ";
+      #   ];
+      # };
       java = {
         disabled = false;
         format = "[$symbol($version )]($style)";
@@ -254,7 +264,7 @@
         threshold = 1;
         symbol_threshold = 0;
         number_threshold = 2;
-        format = "[$symbol$number]($style) ";
+        format = " [$symbol$number]($style) ";
         symbol = "✦";
         style = "bold blue";
         disabled = true;
