@@ -61,6 +61,7 @@
     gnomeExtensions.appindicator
     gnomeExtensions.mpris-label
     gnomeExtensions.no-activities-button
+    gnomeExtensions.caffeine
     steam
 
     gnome3.adwaita-icon-theme
