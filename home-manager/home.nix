@@ -377,7 +377,7 @@ in {
     # emacs
     emacs = {
       enable = true;
-      package = pkgs. emacsPgtk;
+      package = pkgs.emacsPgtk;
       extraPackages = (epkgs: [ epkgs.vterm ]);
     };
   };
@@ -395,6 +395,46 @@ in {
   home.sessionPath =
     [ "$HOME/.cargo/bin" "$HOME/.emacs.d/bin" "$HOME/.local/bin" ];
 
+  home.sessionVariables = {
+    DOOMDIR = "${config.xdg.configHome}/doom";
+    DOOMLOCALDIR = "${config.xdg.configHome}/emacs";
+  };
+  # xdg = {
+  #   enable = true;
+  #   configFile = {
+  #     "doom" = {
+  #       source = ../config/doom;
+  #       recursive = true;
+  #       onChange = ''
+  #         export DOOMDIR="${config.home.sessionVariables.DOOMDIR}"
+  #         export DOOMLOCALDIR="${config.home.sessionVariables.DOOMLOCALDIR}"
+  #         if [ ! -d "$DOOMLOCALDIR" ]; then
+  #           git clone git@github.com:doomemacs/doomemacs.git ~/.config/emacs
+  #           ${config.xdg.configHome}/emacs/bin/doom -y install
+  #         else
+  #           ${config.xdg.configHome}/emacs/bin/doom -y sync -u
+  #         fi
+  #       '';
+  #     };
+  #     "emacs" = {
+  #       source = builtins.fetchGit {
+  #         url = "https://github.com/doomemacs/doomemacs";
+  #         ref = "master";
+  #         rev = "042fe0c43831c8575abfdec4196ebd7305fa16ac";
+  #       };
+  #       onChange = "${pkgs.writeShellScript "doom-change" ''
+  #         export DOOMDIR="${config.home.sessionVariables.DOOMDIR}"
+  #         export DOOMLOCALDIR="${config.home.sessionVariables.DOOMLOCALDIR}"
+  #         if [ ! -d "$DOOMLOCALDIR" ]; then
+  #           ${config.xdg.configHome}/emacs/bin/doom -y install
+  #         else
+  #           ${config.xdg.configHome}/emacs/bin/doom -y sync -u
+  #         fi
+  #       ''}";
+  #     };
+  #   };
+  # };
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
@@ -406,6 +446,7 @@ in {
     ln -Tsf ~/codes/nix-config/config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
     ln -Tsf ~/codes/nix-config/config/alacritty/dracula.yml ~/.config/alacritty/themes/dracula.yml
 
+    ln -Tsf ~/codes/nix-config/config/doom ~/.config/doom
   '';
 
   # setup cursor pointer
