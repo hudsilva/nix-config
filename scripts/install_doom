@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+DOOMLOCALDIR="~/.config/emacs"
+
+if [ ! -d "$DOOMLOCALDIR" ]; then
+  git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+  ~/.config/emacs/bin/doom install
+else
+  ~/.config/emacs/bin/doom sync
+fi
