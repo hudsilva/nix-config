@@ -58,12 +58,26 @@
     stdenv.cc.cc.lib
     teamviewer
     # plymouth
+    steam
+
+    # gnome config
+    nodePackages_latest.typescript
+    gnome.gnome-shell-extensions
+    gnomeExtensions.appindicator
+    gnomeExtensions.pop-shell
+    libnotify
+    dconf
+    font-manager
+    gnome3.adwaita-icon-theme
+
+    # gnome extensions
     gnomeExtensions.appindicator
     gnomeExtensions.mpris-label
     gnomeExtensions.no-activities-button
     gnomeExtensions.caffeine
-    steam
+    gnomeExtensions.tweaks-in-system-menu
 
-    gnome3.adwaita-icon-theme
+    # pop-launcher
+    pop-launcher
   ];
 }

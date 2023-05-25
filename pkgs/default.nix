@@ -3,4 +3,5 @@
 
 { pkgs ? (import ../nixpkgs.nix) { } }: {
   plymouth-theme-hud = pkgs.callPackage ./plymouth-theme-hud { };
+  pop-launcher = pkgs.callPackage ./pop-launcher { };
 }

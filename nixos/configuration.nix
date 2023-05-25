@@ -211,7 +211,26 @@ in {
     };
   };
 
-  # X11/Gnome config
+  # begin gnome config
+  environment.gnome.excludePackages = (with pkgs; [
+      gnome-photos
+      gnome-tour
+  ]) ++ (with pkgs.gnome; [
+      cheese # webcam tool
+      gnome-music
+      epiphany # web browser
+      geary # email reader
+      evince # document viewer
+      gnome-characters
+      totem # video player
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+      gnome-weather
+      gnome-maps
+  ]);
+
   services.xserver = {
     enable = true;
     dpi = 110;
@@ -227,6 +246,14 @@ in {
     };
     desktopManager.gnome.enable = true;
   };
+
+  services.gnome.core-utilities.enable = true;
+  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+
+  programs.dconf = {
+    enable = true;
+  };
+  # end gnome config
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
