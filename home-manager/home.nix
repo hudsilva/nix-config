@@ -208,13 +208,50 @@ in {
     editorconfig-core-c
     beancount
 
+    # gnome extensions
+    gnomeExtensions.user-themes
+    gnomeExtensions.tray-icons-reloaded
+    gnomeExtensions.space-bar
+    gnomeExtensions.sound-output-device-chooser
+    gnomeExtensions.vitals
+    gnomeExtensions.user-themes
+    gnomeExtensions.pop-shell
+    # gnomeExtensions.appindicator
+    gnomeExtensions.mpris-label
+    gnomeExtensions.no-activities-button
+    gnomeExtensions.caffeine
+    pop-gtk-theme
+
     # gnome pop-shell launcher
+    pop-icon-theme
     pop-launcher
+
+    # Fonts
+    hack-font
+    roboto
+    roboto-mono
+    material-design-icons
+    ibm-plex
+    nerdfonts
+    dejavu_fonts
+    liberation_ttf
+    roboto
+    fira-code
+    fira-code-symbols
+    jetbrains-mono
+    siji
+    font-awesome
+    cascadia-code
+    (nerdfonts.override { fonts = [ "Meslo" ]; })
   ];
+
+  # enable font manager
+  fonts.fontconfig.enable = true;
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs = {
+    firefox.enableGnomeExtensions = true;
     git = {
       enable = true;
       package = pkgs.gitAndTools.hub;
@@ -395,12 +432,49 @@ in {
     enable = true;
     settings = {
       "org/gnome/shell" = {
+        favorite-apps = [
+          "firefox.desktop"
+          "emacs.desktop"
+          "Alacritty.desktop"
+          "spotify.desktop"
+          "org.gnome.Nautilus.desktop"
+          "1password.desktop"
+          "todoist-electron.desktop"
+        ];
         disable-user-extensions = false;
         enabled-extensions = [
           "user-theme@gnome-shell-extensions.gcampax.github.com"
-          "appindicatorsupport@rgcjonas.gmail.com"
+          # "appindicatorsupport@rgcjonas.gmail.com"
           "pop-shell@system76.com"
+          "no_activities@yaya.cout"
+          "caffeine@patapon.info"
+          "trayIconsReloaded@selfmade.pl"
+          "Vitals@CoreCoding.com"
+          "sound-output-device-chooser@kgshank.net"
+          "space-bar@luchrioh"
         ];
+      };
+      # "org/gnome/shell/extensions/user-theme" = {
+      #   name = "palenight";
+      # };
+      "org/gnome/desktop/interface" = {
+        # monospace-font-name = "MesloLGS Nerd Font Mono Regular 10";
+        color-scheme = "prefer-dark";
+      };
+      "org/gnome/shell/extensions/vitals" = {
+        show-storage = true;
+        show-voltage = true;
+        show-memory = true;
+        show-fan = true;
+        show-temperature = true;
+        show-processor = true;
+        show-network = true;
+        icon-margin-horizontal = 2;
+        icon-padding-horizontal = 5;
+        icon-size = 20;
+        icons-limit = 5;
+        position-weight = 2;
+        tray-margin-left = 4;
       };
       "org/gnome/mutter" = {
         edge-tiling = true;
@@ -408,7 +482,8 @@ in {
         dynamic-workspaces = false;
       };
       "org/gnome/desktop/wm/preferences" = {
-        num-workspaces = 4;
+        workspace-names = [ "󰞷" "󰗀" "󰋩 " "󰷏" "󰋩" ];
+        num-workspaces = 5;
         focus-mode = "sloppy";
       };
       "org/gnome/settings-daemon/plugins/color" = {
@@ -422,7 +497,11 @@ in {
       # Enable and configure pop-shell
       # (see https://github.com/pop-os/shell/blob/master_jammy/scripts/configure.sh)
       "org/gnome/shell/extensions/pop-shell" = {
-        active-hint = false;
+        active-hint = true;
+        mouse-cursor-focus-location = "uint32 1";
+        mouse-cursor-follows-active-window = true;
+        show-skip-taskbar = true;
+        show-title = false;
       };
       "org/gnome/desktop/wm/keybindings" = {
         minimize = [ "<Super>comma" ];
@@ -493,12 +572,22 @@ in {
   gtk = {
     enable = true;
     iconTheme = {
-      name = "Adwaita";
-      package = pkgs.gnome.adwaita-icon-theme;
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
     };
-    theme = {
-      name = "Pop";
-      package = pkgs.pop-gtk-theme;
+    # theme = {
+    #   name = "palenight";
+    #   package = pkgs.palenight-theme;
+    # };
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
     };
   };
 
@@ -512,6 +601,7 @@ in {
   home.sessionVariables = {
     DOOMDIR = "${config.xdg.configHome}/doom";
     DOOMLOCALDIR = "${config.xdg.configHome}/emacs";
+    # GTK_THEME = "palenight";
   };
   # xdg = {
   #   enable = true;

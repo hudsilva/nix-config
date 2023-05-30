@@ -231,6 +231,9 @@ in {
       gnome-maps
   ]);
 
+  # enable gnome browser connect for gnome shell extensions
+  services.gnome.gnome-browser-connector.enable = true;
+
   services.xserver = {
     enable = true;
     dpi = 110;

@@ -63,19 +63,19 @@
     # gnome config
     nodePackages_latest.typescript
     gnome.gnome-shell-extensions
-    gnomeExtensions.appindicator
-    gnomeExtensions.pop-shell
+    # gnomeExtensions.appindicator
+    # gnomeExtensions.pop-shell
     libnotify
     dconf
     font-manager
     gnome3.adwaita-icon-theme
+    gnome.gnome-tweaks
 
     # gnome extensions
-    gnomeExtensions.appindicator
-    gnomeExtensions.mpris-label
-    gnomeExtensions.no-activities-button
-    gnomeExtensions.caffeine
-    gnomeExtensions.tweaks-in-system-menu
+    # gnomeExtensions.appindicator
+    # gnomeExtensions.mpris-label
+    # gnomeExtensions.no-activities-button
+    # gnomeExtensions.caffeine
 
     # pop-launcher
     pop-launcher
