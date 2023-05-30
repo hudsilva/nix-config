@@ -460,6 +460,7 @@ in {
       "org/gnome/desktop/interface" = {
         # monospace-font-name = "MesloLGS Nerd Font Mono Regular 10";
         color-scheme = "prefer-dark";
+        enable-animations = false;
       };
       # "org/gnome/shell/extensions/vitals" = {
       #   show-storage = true;
@@ -524,10 +525,12 @@ in {
         switch-to-workspace-2 = [ "<Super>2" ];
         switch-to-workspace-3 = [ "<Super>3" ];
         switch-to-workspace-4 = [ "<Super>4" ];
+        switch-to-workspace-5 = [ "<Super>5" ];
         move-to-workspace-1 = [ "<Super><Shift>1" ];
         move-to-workspace-2 = [ "<Super><Shift>2" ];
         move-to-workspace-3 = [ "<Super><Shift>3" ];
         move-to-workspace-4 = [ "<Super><Shift>4" ];
+        move-to-workspace-5 = [ "<Super><Shift>5" ];
       };
       "org/gnome/shell/keybindings" = {
         open-application-menu = [ ];

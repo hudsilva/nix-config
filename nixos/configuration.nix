@@ -248,6 +248,7 @@ in {
       gdm.autoSuspend = false;
     };
     desktopManager.gnome.enable = true;
+    desktopManager.gnome.sessionPath = [ pkgs.gnome.mutter pkgs.gnome.gnome-shell pkgs.gnome.nautilus ];
   };
 
   services.gnome.core-utilities.enable = true;
