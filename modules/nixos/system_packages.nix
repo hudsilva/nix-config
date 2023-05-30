@@ -64,7 +64,7 @@
     nodePackages_latest.typescript
     gnome.gnome-shell-extensions
     # gnomeExtensions.appindicator
-    # gnomeExtensions.pop-shell
+    gnomeExtensions.pop-shell
     libnotify
     dconf
     font-manager

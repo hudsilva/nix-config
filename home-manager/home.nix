@@ -212,7 +212,6 @@ in {
     gnomeExtensions.user-themes
     gnomeExtensions.tray-icons-reloaded
     gnomeExtensions.space-bar
-    gnomeExtensions.sound-output-device-chooser
     gnomeExtensions.vitals
     gnomeExtensions.user-themes
     gnomeExtensions.pop-shell
@@ -221,10 +220,11 @@ in {
     gnomeExtensions.no-activities-button
     gnomeExtensions.caffeine
     pop-gtk-theme
+    gnomeExtensions.resource-monitor
 
     # gnome pop-shell launcher
     pop-icon-theme
-    pop-launcher
+    # pop-launcher
 
     # Fonts
     hack-font
@@ -449,8 +449,8 @@ in {
           "no_activities@yaya.cout"
           "caffeine@patapon.info"
           "trayIconsReloaded@selfmade.pl"
-          "Vitals@CoreCoding.com"
-          "sound-output-device-chooser@kgshank.net"
+          # "Vitals@CoreCoding.com"
+          "Resource_Monitor@Ory0n"
           "space-bar@luchrioh"
         ];
       };
@@ -461,30 +461,31 @@ in {
         # monospace-font-name = "MesloLGS Nerd Font Mono Regular 10";
         color-scheme = "prefer-dark";
       };
-      "org/gnome/shell/extensions/vitals" = {
-        show-storage = true;
-        show-voltage = true;
-        show-memory = true;
-        show-fan = true;
-        show-temperature = true;
-        show-processor = true;
-        show-network = true;
-        icon-margin-horizontal = 2;
-        icon-padding-horizontal = 5;
-        icon-size = 20;
-        icons-limit = 5;
-        position-weight = 2;
-        tray-margin-left = 4;
-      };
+      # "org/gnome/shell/extensions/vitals" = {
+      #   show-storage = true;
+      #   show-voltage = true;
+      #   show-memory = true;
+      #   show-fan = true;
+      #   show-temperature = true;
+      #   show-processor = true;
+      #   show-network = true;
+      #   icon-margin-horizontal = 2;
+      #   icon-padding-horizontal = 5;
+      #   icon-size = 20;
+      #   icons-limit = 5;
+      #   position-weight = 2;
+      #   tray-margin-left = 4;
+      # };
       "org/gnome/mutter" = {
         edge-tiling = true;
         workspaces-only-on-primary = false;
         dynamic-workspaces = false;
       };
       "org/gnome/desktop/wm/preferences" = {
-        workspace-names = [ "󰞷" "󰗀" "󰋩 " "󰷏" "󰋩" ];
+        workspace-names = [ "󰞷" "󰗀" "󰊯" "󰷏" "󰋩" ];
         num-workspaces = 5;
-        focus-mode = "sloppy";
+        # focus-mode = "sloppy";
+        focus-mode = "click";
       };
       "org/gnome/settings-daemon/plugins/color" = {
         night-light-enabled = true;

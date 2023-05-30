@@ -244,7 +244,7 @@ in {
 
     displayManager = {
       gdm.enable = true;
-      gdm.wayland = false;
+      gdm.wayland = true;
       gdm.autoSuspend = false;
     };
     desktopManager.gnome.enable = true;
