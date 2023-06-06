@@ -224,7 +224,7 @@ in {
 
     # gnome pop-shell launcher
     pop-icon-theme
-    # pop-launcher
+    pop-launcher
 
     # Fonts
     hack-font
