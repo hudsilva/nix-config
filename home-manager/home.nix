@@ -417,14 +417,15 @@ in {
     # emacs
     emacs = {
       enable = true;
-      # package = pkgs.emacs-unstable-pgtk;
+      package = pkgs.emacs-pgtk;
       extraPackages = (epkgs: [ epkgs.vterm ]);
     };
   };
 
   services.emacs = {
     enable = true;
-    package = pkgs.emacs-unstable-pgtk;
+    # package = pkgs.emacs-unstable-pgtk;
+    package = pkgs.emacs-pgtk;
     client.enable = true;
     defaultEditor = true;
     socketActivation.enable = true;
