@@ -590,6 +590,16 @@ in {
     };
   };
 
+  # qt config
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
+    style = {
+      name = "gtk2";
+      package = pkgs.libsForQt5.qtstyleplugins;
+    };
+  };
+
   # zsh scripts
   home.file.".custom_aliases".source = ./custom_aliases;
 
@@ -601,6 +611,7 @@ in {
     XDG_CONFIG_HOME = "$HOME/.config";
     DOOMDIR = "${config.xdg.configHome}/doom";
     DOOMLOCALDIR = "${config.xdg.configHome}/emacs";
+    QT_QPA_PLATFORM = "wayland";
     # GTK_THEME = "palenight";
   };
   # xdg = {
