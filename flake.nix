@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hardware.url = "github:nixos/nixos-hardware/master";
-    emacs.url = "github:nix-community/emacs-overlay";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
     devshell.url = "github:numtide/devshell";
     nix-colors.url = "github:misterio77/nix-colors";
 

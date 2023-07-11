@@ -30,7 +30,7 @@ in {
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.modifications
       outputs.overlays.additions
-      inputs.emacs.overlays.default
+      inputs.emacs-overlay.overlays.default
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -190,6 +190,7 @@ in {
     zlib
     # todoist-electron
     # transmission-gtk
+    gtk3
     deluge
     starship
     tmux
@@ -416,15 +417,13 @@ in {
     # emacs
     emacs = {
       enable = true;
-      # package = pkgs.emacsPgtk;
-      package = pkgs.emacs-unstable-pgtk;
+      # package = pkgs.emacs-unstable-pgtk;
       extraPackages = (epkgs: [ epkgs.vterm ]);
     };
   };
 
   services.emacs = {
     enable = true;
-    # package = pkgs.emacsPgtk;
     package = pkgs.emacs-unstable-pgtk;
     client.enable = true;
     defaultEditor = true;
@@ -608,6 +607,7 @@ in {
     [ "$HOME/.cargo/bin" "$HOME/.emacs.d/bin" "$HOME/.local/bin" ];
 
   home.sessionVariables = {
+    XDG_CONFIG_HOME = "$HOME/.config";
     DOOMDIR = "${config.xdg.configHome}/doom";
     DOOMLOCALDIR = "${config.xdg.configHome}/emacs";
     # GTK_THEME = "palenight";
@@ -647,6 +647,7 @@ in {
   #     };
   #   };
   # };
+
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
