@@ -48,6 +48,7 @@ in {
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = (_: true);
+      permittedInsecurePackages = [ "electron-21.4.0" ];
     };
   };
 
@@ -188,8 +189,7 @@ in {
     vim
     wget
     zlib
-    # todoist-electron
-    # transmission-gtk
+    todoist-electron
     gtk3
     deluge
     starship
