@@ -30,7 +30,7 @@ in {
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.modifications
       outputs.overlays.additions
-      inputs.emacs-overlay.overlay
+      inputs.emacs.overlays.default
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -57,6 +57,7 @@ in {
   };
 
   home.packages = with pkgs; [
+    gnomeExtensions.timepp
     notion-app-enhanced
     bottom
     steam
@@ -75,7 +76,6 @@ in {
 
     # python
     python3Full
-    python-language-server
 
     # clojure
     clojure
@@ -84,11 +84,10 @@ in {
 
     # rust
     llvm
-    rust-analyzer
-    cargo
-    # rustup
-    rustc
-    rustfmt
+    # rust-analyzer
+    # cargo
+    rustup
+    # rustc
     sccache
     protobuf
     binutils
@@ -104,7 +103,7 @@ in {
     # javascript
     nodejs
     nodePackages.yalc
-    nodePackages.typescript-language-server
+    # nodePackages.typescript-language-server
     nodePackages.javascript-typescript-langserver
     nodePackages.jsonlint
     nodePackages.yarn
@@ -189,8 +188,9 @@ in {
     vim
     wget
     zlib
-    todoist-electron
-    transmission-gtk
+    # todoist-electron
+    # transmission-gtk
+    deluge
     starship
     tmux
     zoom-us
@@ -243,6 +243,7 @@ in {
     font-awesome
     cascadia-code
     (nerdfonts.override { fonts = [ "Meslo" ]; })
+    speedtest-cli
   ];
 
   # enable font manager
@@ -288,7 +289,6 @@ in {
           "aliases"
           "sudo"
           "direnv"
-          "emacs"
           "emoji"
           "encode64"
           "jsontools"
@@ -416,15 +416,20 @@ in {
     # emacs
     emacs = {
       enable = true;
-      package = pkgs.emacsPgtk;
+      # package = pkgs.emacsPgtk;
+      package = pkgs.emacs-unstable-pgtk;
       extraPackages = (epkgs: [ epkgs.vterm ]);
     };
   };
 
   services.emacs = {
     enable = true;
-    package = pkgs.emacsPgtk;
+    # package = pkgs.emacsPgtk;
+    package = pkgs.emacs-unstable-pgtk;
     client.enable = true;
+    defaultEditor = true;
+    socketActivation.enable = true;
+    extraOptions = [ ];
   };
 
   # dconf config

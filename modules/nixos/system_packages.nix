@@ -20,8 +20,8 @@
     file
     htop
     libsecret
-    libgcc
-    libgccjit
+    # libgcc
+    # libgccjit
     i7z
     iw
     jq
@@ -50,8 +50,9 @@
     vim
     binutils
     libsecret
-    libgcc
-    libgccjit
+    gcc.cc.libgcc
+    # libgcc
+    # libgccjit
     lm_sensors
     pkg-config
     pciutils
@@ -79,5 +80,36 @@
 
     # pop-launcher
     pop-launcher
+
+    libGL
+    libappindicator-gtk3
+    libdrm
+    # libnotify
+    # libpulseaudio
+    # libuuid
+    # libusb1
+    # lshw
+    # xorg.libxcb
+    libxkbcommon
+    mesa
+    # nspr
+    # nss
+    # pango
+    pipewire
+    systemd
+    icu
+    xorg.libX11
+    xorg.libXScrnSaver
+    xorg.libXcomposite
+    xorg.libXcursor
+    xorg.libXdamage
+    xorg.libXext
+    xorg.libXfixes
+    xorg.libXi
+    xorg.libXrandr
+    xorg.libXrender
+    xorg.libXtst
+    xorg.libxkbfile
+    xorg.libxshmfence
   ];
 }

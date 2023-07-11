@@ -2,15 +2,15 @@
   description = "Your new nix config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hardware.url = "github:nixos/nixos-hardware/master";
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    emacs.url = "github:nix-community/emacs-overlay";
     devshell.url = "github:numtide/devshell";
     nix-colors.url = "github:misterio77/nix-colors";
 

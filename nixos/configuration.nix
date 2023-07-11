@@ -21,7 +21,8 @@ in {
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
-    inputs.hardware.nixosModules.dell-xps-15-9500
+    inputs.hardware.nixosModules.dell-xps-15-9520
+    inputs.hardware.nixosModules.dell-xps-15-9520-nvidia
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
@@ -79,7 +80,7 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
     enable = true;
-    version = 2;
+    # version = 2;
     efiSupport = true;
     device = "nodev";
   };
@@ -156,7 +157,6 @@ in {
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    media-session.enable = false;
     wireplumber.enable = true;
   };
 
@@ -186,17 +186,17 @@ in {
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware = {
-    video.hidpi.enable = true;
     opengl = {
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
+      extraPackages = with pkgs; [ vaapiVdpau libvdpau-va-gl ];
     };
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.latest;
       nvidiaSettings = true;
       modesetting.enable = true;
-      nvidiaPersistenced = true;
+      # nvidiaPersistenced = true;
 
       prime = {
         offload.enable = true;
@@ -259,14 +259,18 @@ in {
   };
   # end gnome config
 
+  # enable zsh
+   programs.zsh.enable = true;
+
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
   services.openssh = {
     enable = true;
     # Forbid root login through SSH.
-    permitRootLogin = "no";
     # Use keys only. Remove if you want to SSH using password (not recommended)
-    passwordAuthentication = false;
+    settings = {
+      PermitRootLogin = "no";
+    };
   };
 
   environment.variables = {
