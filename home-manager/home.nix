@@ -333,7 +333,7 @@ in {
             # set -g @dracula-network-bandwidth wlan0
             # set -g @dracula-network-bandwidth-interval 0
             # set -g @dracula-network-bandwidth-show-interface true
-            '';
+          '';
         }
       ];
 
@@ -498,13 +498,11 @@ in {
         night-light-temperature = "uint32 3500";
         night-light-schedule-automatic = true;
       };
-      "org/gnome/eog/ui" = {
-        image-gallery = true;
-      };
+      "org/gnome/eog/ui" = { image-gallery = true; };
       # Enable and configure pop-shell
       # (see https://github.com/pop-os/shell/blob/master_jammy/scripts/configure.sh)
       "org/gnome/shell/extensions/pop-shell" = {
-        active-hint = true;
+        # active-hint = true;
         mouse-cursor-focus-location = "uint32 1";
         mouse-cursor-follows-active-window = true;
         show-skip-taskbar = true;
@@ -522,7 +520,8 @@ in {
         move-to-monitor-right = [ ];
         move-to-workspace-down = [ ];
         move-to-workspace-up = [ ];
-        switch-to-workspace-down = [ "<Primary><Super>Down" "<Primary><Super>j" ];
+        switch-to-workspace-down =
+          [ "<Primary><Super>Down" "<Primary><Super>j" ];
         switch-to-workspace-up = [ "<Primary><Super>Up" "<Primary><Super>k" ];
         toggle-maximized = [ "<Super>m" ];
         close = [ "<Super>q" "<Alt>F4" ];
@@ -566,37 +565,28 @@ in {
         www = [ "<Super>b" ];
         terminal = [ ];
       };
-      "org/gnome/mutter/wayland/keybindings" = {
-        restore-shortcuts = [ ];
-      };
-      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-        binding = "<Super>t";
-        command = "alacritty"; # TODO: use configured "default"
-        name = "Open Alacritty";
-      };
+      "org/gnome/mutter/wayland/keybindings" = { restore-shortcuts = [ ]; };
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" =
+        {
+          binding = "<Super>t";
+          command = "alacritty"; # TODO: use configured "default"
+          name = "Open Alacritty";
+        };
     };
   };
 
   # gtk config
   gtk = {
     enable = true;
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+    cursorTheme = {
+      package = pkgs.vanilla-dmz;
+      name = "Vanilla-DMZ";
+      size = 16;
     };
-    # theme = {
-    #   name = "palenight";
-    #   package = pkgs.palenight-theme;
-    # };
-    gtk3.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
-    gtk4.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
+    font = {
+      package = pkgs.dejavu_fonts;
+      name = "DejaVu Sans";
+      size = 10;
     };
   };
 
@@ -649,12 +639,11 @@ in {
   #   };
   # };
 
-
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
   # create symbolic links
-  home.activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
+  home.activation.linkMyFiles = config.lib.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p ~/.config/alacritty/
     mkdir -p ~/.config/alacritty/themes/
 
