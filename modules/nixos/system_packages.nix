@@ -48,7 +48,6 @@
     libsmbios
     powertop
     vim
-    binutils
     libsecret
     gcc.cc.libgcc
     # libgcc

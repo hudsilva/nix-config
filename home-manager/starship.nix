@@ -8,7 +8,7 @@
         let
           git = "\\($git_branch$git_commit$git_metrics$git_state$git_status\\)";
         in
-        "$directory$username$hostname$nix_shell(${git}) $character$jobs$cmd_duration";
+        "$directory$username$hostname$nix_shell$rust(${git}) $character$jobs$cmd_duration";
       line_break = {
         disabled = true;
       };

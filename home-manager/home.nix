@@ -93,6 +93,7 @@ in {
     protobuf
     binutils
     libGL
+    libiconv
 
     # jdk
     jdk11
